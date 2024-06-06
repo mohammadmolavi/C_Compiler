@@ -7,6 +7,8 @@ class Parser:
         return self.START()
 
     def START(self):
+        if self.current_token_type() == 'T_COMMENT':
+            self.COMMENT()
         funcs = self.FUNCS()
         return {'type': 'START', 'body': funcs}
 
@@ -137,7 +139,8 @@ class Parser:
 
     def CALL_PARAMS(self):
         params = []
-        if self.current_token_type() in ['T_ID' , 'T_DECIMAL' , 'T_CHARACTER' , 'T_HEXADECIMAL' , 'T_STRING']:
+        if self.current_token_type() in ['T_ID' , 'T_DECIMAL' , 'T_CHARACTER' , 'T_HEXADECIMAL'
+                                        , 'T_STRING', 'T_TRUE', 'T_FALSE']:
             params.append(self.CALL_PARAM())
             params.append(self.CALL_MORE_PARAMS())
             return params
@@ -158,8 +161,10 @@ class Parser:
             return more_params
 
     def CALL_PARAM(self):
-        if self.current_token_type() in ['T_ID', 'T_DECIMAL' , 'T_CHARACTER' , 'T_HEXADECIMAL' , 'T_STRING']:
-            name = self.consume(['T_ID', 'T_DECIMAL' , 'T_CHARACTER' , 'T_HEXADECIMAL' , 'T_STRING'])
+        if self.current_token_type() in ['T_ID', 'T_DECIMAL' , 'T_CHARACTER' , 'T_HEXADECIMAL'
+                                        , 'T_STRING', 'T_TRUE', 'T_FALSE']:
+            name = self.consume(['T_ID', 'T_DECIMAL' , 'T_CHARACTER' , 'T_HEXADECIMAL'
+                                , 'T_STRING', 'T_TRUE', 'T_FALSE'])
             return {'type': 'PARAM', 'name': name[1]}
         else:
             return
@@ -177,11 +182,14 @@ class Parser:
     def DEF_FOR(self):
         type_specifier = self.consume(['T_INT', 'T_CHAR', 'T_BOOL'])
         var = self.consume('T_ID')
+        if self.current_token_type() == 'T_ASSIGN':
+            var_value = self.consume(self.current_token_type())
+            self.consume(['T_ID', 'T_DECIMAL' , 'T_CHARACTER' , 'T_HEXADECIMAL' , 'T_STRING'])
         self.consume('T_SEMICOLON')
         relexp = self.RELEXP()
         self.consume('T_SEMICOLON')
         exp1 = self.EXP1()
-        return {'type': 'DEF_FOR', 'var_type': type_specifier[1], 'var': var[1], 'relexp': relexp, 'exp1': exp1}
+        return {'type': 'DEF_FOR', 'var_type': type_specifier[1], 'var': var[1] , 'var_value' : var_value, 'relexp': relexp, 'exp1': exp1}
 
     def IF(self):
         self.consume('T_IF')
@@ -206,7 +214,7 @@ class Parser:
     def PRINT(self):
         self.consume('T_PRINT')
         self.consume('T_LP')
-        string = self.consume('T_STRING')
+        string = self.consume(['T_STRING', 'T_ID'])
         params_print = self.PARAMS_PRINT()
         self.consume('T_RP')
         self.consume('T_SEMICOLON')
