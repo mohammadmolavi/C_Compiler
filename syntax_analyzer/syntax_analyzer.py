@@ -215,10 +215,12 @@ class Parser:
         params = []
         if self.current_token_type() == 'T_COMMA':
             self.consume('T_COMMA')
-            params.extend(self.OPERAND())
+            expr1 = self.EXP1()
+            params.append(expr1)
             while self.current_token_type() == 'T_COMMA':
                 self.consume('T_COMMA')
-                params.extend(self.OPERAND())
+                expr1 = self.EXP1()
+                params.append(expr1)
             return params
 
     def RETURN(self):
