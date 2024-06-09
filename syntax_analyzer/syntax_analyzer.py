@@ -39,31 +39,25 @@ class Parser:
         params = []
         if self.current_token_type() in ['T_INT', 'T_CHAR', 'T_BOOL']:
             params.append(self.PARAM())
-            params.append(self.MORE_PARAMS())
+            params.extend(self.MORE_PARAMS())
             return params
-        elif self.current_token_type() == 'T_RP':
-            return params
-
         else:
-            raise SyntaxError(f"Unexpected token {self.current_token()[1]}")
-
+            return params
 
     def MORE_PARAMS(self):
         more_params = []
         if self.current_token_type() == "T_COMMA":
             self.consume("T_COMMA")
             more_params.append(self.PARAM())
-            more_params.append(self.MORE_PARAMS())
+            more_params.extend(self.MORE_PARAMS())
             return more_params
         elif self.current_token_type() == "T_RP":
             return more_params
-
 
     def PARAM(self):
         type_specifier = self.consume(['T_INT', 'T_CHAR', 'T_BOOL'])
         name = self.consume('T_ID')
         return {'type': 'PARAM', 'param_type': type_specifier[1], 'name': name[1]}
-
 
     def EXP(self):
         exps = []
@@ -93,10 +87,12 @@ class Parser:
 
     def EXP1(self):
         left = self.OPERAND()
-        while self.current_token_type() in ['T_ASSIGN', 'T_AOP_PL', 'T_AOP_MN', 'T_AOP_MP', 'T_AOP_DV', 'T_AOP_MOD', 'T_ROP_EQ',
+        while self.current_token_type() in ['T_ASSIGN', 'T_AOP_PL', 'T_AOP_MN', 'T_AOP_MP', 'T_AOP_DV', 'T_AOP_MOD',
+                                            'T_ROP_EQ',
                                             'T_ROP_NE', 'T_ROP_S', 'T_ROP_G', 'T_ROP_SE', 'T_ROP_GE']:
             op = self.consume(
-                ['T_ASSIGN', 'T_AOP_PL', 'T_AOP_MN', 'T_AOP_MP', 'T_AOP_DV','T_AOP_MOD','T_ROP_EQ', 'T_ROP_NE', 'T_ROP_S',
+                ['T_ASSIGN', 'T_AOP_PL', 'T_AOP_MN', 'T_AOP_MP', 'T_AOP_DV', 'T_AOP_MOD', 'T_ROP_EQ', 'T_ROP_NE',
+                 'T_ROP_S',
                  'T_ROP_G', 'T_ROP_SE', 'T_ROP_GE'])
             right = self.EXP1()
             left = {'operator': op[1], 'left': left, 'right': right}
@@ -139,8 +135,8 @@ class Parser:
 
     def CALL_PARAMS(self):
         params = []
-        if self.current_token_type() in ['T_ID' , 'T_DECIMAL' , 'T_CHARACTER' , 'T_HEXADECIMAL'
-                                        , 'T_STRING', 'T_TRUE', 'T_FALSE']:
+        if self.current_token_type() in ['T_ID', 'T_DECIMAL', 'T_CHARACTER', 'T_HEXADECIMAL'
+            , 'T_STRING', 'T_TRUE', 'T_FALSE']:
             params.append(self.CALL_PARAM())
             params.append(self.CALL_MORE_PARAMS())
             return params
@@ -161,10 +157,10 @@ class Parser:
             return more_params
 
     def CALL_PARAM(self):
-        if self.current_token_type() in ['T_ID', 'T_DECIMAL' , 'T_CHARACTER' , 'T_HEXADECIMAL'
-                                        , 'T_STRING', 'T_TRUE', 'T_FALSE']:
-            name = self.consume(['T_ID', 'T_DECIMAL' , 'T_CHARACTER' , 'T_HEXADECIMAL'
-                                , 'T_STRING', 'T_TRUE', 'T_FALSE'])
+        if self.current_token_type() in ['T_ID', 'T_DECIMAL', 'T_CHARACTER', 'T_HEXADECIMAL',
+                                         'T_STRING', 'T_TRUE', 'T_FALSE']:
+            name = self.consume(['T_ID', 'T_DECIMAL', 'T_CHARACTER', 'T_HEXADECIMAL',
+                                 'T_STRING', 'T_TRUE', 'T_FALSE'])
             return {'type': 'PARAM', 'name': name[1]}
         else:
             return
@@ -184,12 +180,13 @@ class Parser:
         var = self.consume('T_ID')
         if self.current_token_type() == 'T_ASSIGN':
             var_value = self.consume(self.current_token_type())
-            self.consume(['T_ID', 'T_DECIMAL' , 'T_CHARACTER' , 'T_HEXADECIMAL' , 'T_STRING'])
+            self.consume(['T_ID', 'T_DECIMAL', 'T_CHARACTER', 'T_HEXADECIMAL', 'T_STRING'])
         self.consume('T_SEMICOLON')
         relexp = self.RELEXP()
         self.consume('T_SEMICOLON')
         exp1 = self.EXP1()
-        return {'type': 'DEF_FOR', 'var_type': type_specifier[1], 'var': var[1] , 'var_value' : var_value, 'relexp': relexp, 'exp1': exp1}
+        return {'type': 'DEF_FOR', 'var_type': type_specifier[1], 'var': var[1], 'var_value': var_value,
+                'relexp': relexp, 'exp1': exp1}
 
     def IF(self):
         self.consume('T_IF')
@@ -224,7 +221,7 @@ class Parser:
         params = []
         if self.current_token_type() == 'T_ID':
             params.append(self.consume('T_ID')[1])
-            type= self.current_token_type()
+            type = self.current_token_type()
             while self.current_token_type() == 'T_COMMA':
                 self.consume('T_COMMA')
                 params.append(self.consume('T_ID')[1])
@@ -299,8 +296,7 @@ tokens = [
 import json
 
 with open("../tokens.json") as token_file:
-    tokens=json.load(token_file)
-
+    tokens = json.load(token_file)
 
 parser = Parser(tokens)
 ast = parser.parse()
