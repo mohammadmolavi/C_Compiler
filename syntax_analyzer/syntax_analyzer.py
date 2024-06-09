@@ -87,13 +87,8 @@ class Parser:
 
     def EXP1(self):
         left = self.OPERAND()
-        while self.current_token_type() in ['T_ASSIGN', 'T_AOP_PL', 'T_AOP_MN', 'T_AOP_MP', 'T_AOP_DV', 'T_AOP_MOD',
-                                            'T_ROP_EQ',
-                                            'T_ROP_NE', 'T_ROP_S', 'T_ROP_G', 'T_ROP_SE', 'T_ROP_GE']:
-            op = self.consume(
-                ['T_ASSIGN', 'T_AOP_PL', 'T_AOP_MN', 'T_AOP_MP', 'T_AOP_DV', 'T_AOP_MOD', 'T_ROP_EQ', 'T_ROP_NE',
-                 'T_ROP_S',
-                 'T_ROP_G', 'T_ROP_SE', 'T_ROP_GE'])
+        while self.current_token_type() in ['T_ASSIGN', 'T_AOP_PL', 'T_AOP_MN', 'T_AOP_MP', 'T_AOP_DV', 'T_AOP_MOD']:
+            op = self.consume(['T_ASSIGN', 'T_AOP_PL', 'T_AOP_MN', 'T_AOP_MP', 'T_AOP_DV', 'T_AOP_MOD','T_AOP_MOD'])
             right = self.EXP1()
             left = {'operator': op[1], 'left': left, 'right': right}
         return left
@@ -127,7 +122,7 @@ class Parser:
         self.consume('T_ID')
         if self.current_token_type() == 'T_LP':
             self.consume('T_LP')
-            params.append(self.CALL_PARAMS())
+            params.extend(self.CALL_PARAMS())
             self.consume('T_RP')
             return {'type': 'call_func', 'name': id, 'parameters': params}
         else:
@@ -138,7 +133,7 @@ class Parser:
         if self.current_token_type() in ['T_ID', 'T_DECIMAL', 'T_CHARACTER', 'T_HEXADECIMAL'
             , 'T_STRING', 'T_TRUE', 'T_FALSE']:
             params.append(self.CALL_PARAM())
-            params.append(self.CALL_MORE_PARAMS())
+            params.extend(self.CALL_MORE_PARAMS())
             return params
         elif self.current_token_type() == 'T_RP':
             return params
@@ -151,7 +146,7 @@ class Parser:
         if self.current_token_type() == "T_COMMA":
             self.consume("T_COMMA")
             more_params.append(self.CALL_PARAM())
-            more_params.append(self.CALL_MORE_PARAMS())
+            more_params.extend(self.CALL_MORE_PARAMS())
             return more_params
         elif self.current_token()[1] == ")":
             return more_params
@@ -159,9 +154,8 @@ class Parser:
     def CALL_PARAM(self):
         if self.current_token_type() in ['T_ID', 'T_DECIMAL', 'T_CHARACTER', 'T_HEXADECIMAL',
                                          'T_STRING', 'T_TRUE', 'T_FALSE']:
-            name = self.consume(['T_ID', 'T_DECIMAL', 'T_CHARACTER', 'T_HEXADECIMAL',
-                                 'T_STRING', 'T_TRUE', 'T_FALSE'])
-            return {'type': 'PARAM', 'name': name[1]}
+            name = self.EXP1()
+            return {'type': 'PARAM', 'expression': name}
         else:
             return
 
@@ -219,18 +213,13 @@ class Parser:
 
     def PARAMS_PRINT(self):
         params = []
-        if self.current_token_type() == 'T_ID':
-            params.append(self.consume('T_ID')[1])
-            type = self.current_token_type()
+        if self.current_token_type() == 'T_COMMA':
+            self.consume('T_COMMA')
+            params.extend(self.OPERAND())
             while self.current_token_type() == 'T_COMMA':
                 self.consume('T_COMMA')
-                params.append(self.consume('T_ID')[1])
-        else:
-            type = self.current_token_type()
-            while self.current_token_type() == 'T_COMMA':
-                self.consume('T_COMMA')
-                params.append(self.EXP1())
-        return params
+                params.extend(self.OPERAND())
+            return params
 
     def RETURN(self):
         self.consume('T_RETURN')

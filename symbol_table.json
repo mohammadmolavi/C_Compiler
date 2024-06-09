@@ -85,7 +85,7 @@
             "=="
         ],
         [
-            "T_TRUE",
+            "T_ID",
             "true"
         ],
         [
@@ -365,7 +365,7 @@
     ],
     "17": [
         [
-            "T_CHAR",
+            "T_ID",
             "char"
         ],
         [
@@ -395,19 +395,15 @@
             "bool"
         ],
         [
-            "T_BOOL",
-            "bool"
-        ],
-        [
             "T_ID",
-            "_var"
+            "bool_var"
         ],
         [
             "T_ASSIGN",
             "="
         ],
         [
-            "T_TRUE",
+            "T_ID",
             "true"
         ],
         [
@@ -447,7 +443,7 @@
             "const"
         ],
         [
-            "T_CHAR",
+            "T_ID",
             "char"
         ],
         [
@@ -509,12 +505,8 @@
             ","
         ],
         [
-            "T_INT",
-            "int"
-        ],
-        [
             "T_ID",
-            "eger_var"
+            "integer_var"
         ],
         [
             "T_RP",
@@ -581,12 +573,8 @@
             ","
         ],
         [
-            "T_CHAR",
-            "char"
-        ],
-        [
             "T_ID",
-            "_var"
+            "char_var"
         ],
         [
             "T_RP",
@@ -891,56 +879,8 @@
             "static_cast"
         ],
         [
-            "T_ROP_S",
-            "<"
-        ],
-        [
-            "T_INT",
-            "int"
-        ],
-        [
-            "T_ROP_G",
-            ">"
-        ],
-        [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_ID",
-            "pow"
-        ],
-        [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_ID",
-            "num1"
-        ],
-        [
-            "T_COMMA",
-            ","
-        ],
-        [
-            "T_DECIMAL",
-            "2"
-        ],
-        [
-            "T_RP",
-            ")"
-        ],
-        [
-            "T_RP",
-            ")"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
+            "ERROR",
+            "<int>(pow(num1 "
         ]
     ],
     "37": [
@@ -1421,7 +1361,7 @@
             ","
         ],
         [
-            "T_TRUE",
+            "T_ID",
             "true"
         ],
         [
@@ -1463,7 +1403,7 @@
             ","
         ],
         [
-            "T_FALSE",
+            "T_ID",
             "false"
         ],
         [

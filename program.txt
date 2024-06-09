@@ -33,7 +33,7 @@ int main() {
     int _difference = num1 - num2;
     int _product = num1 * num2;
     int _remainder = num1 % num2;
-    int _power = static_cast<int>(pow(num1, 2));
+    int _power = static_cast<int>(pow(num1 + 1, 2));
 
     // Print the results of arithmetic operations
     print("Sum: ", sum);
