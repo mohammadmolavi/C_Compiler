@@ -1,3 +1,8 @@
+import traceback
+
+import exceptiongroup
+
+
 class Parser:
     def __init__(self, tokens):
         self.tokens = tokens
@@ -64,6 +69,7 @@ class Parser:
         while self.pos < len(self.tokens) and self.current_token_type() != 'T_RB':
             if self.current_token_type() in ['T_ID','T_INT', 'T_CHAR', 'T_BOOL']:
                 exps.append(self.EXP1())
+                self.consume('T_SEMICOLON')
             elif self.current_token_type() == 'T_FOR':
                 exps.append(self.FOR())
             elif self.current_token_type() == 'T_IF':
@@ -81,8 +87,12 @@ class Parser:
             elif self.current_token_type() == 'T_SEMICOLON':
                 self.consume('T_SEMICOLON')
             else:
+                # self.consume('T_SEMICOLON')
                 print(SyntaxError(f"Expected token T_SEMICOLON, got {self.current_token()},pos {self.pos}"))
-                self.pos += 1
+                if self.tokens[self.pos +1][0] != 'T_SEMICOLON':
+                    self.tokens.insert(self.pos, 'T_SEMICOLON')
+                else:
+                    del self.tokens[self.pos]
 
 
         return exps
@@ -264,12 +274,17 @@ class Parser:
                     raise SyntaxError(f"Expected token {expected_types}, got {token},pos {self.pos}")
             else:
                 if token[0] != expected_types:
-                    print(SyntaxError(f"Expected token {expected_types}, got {token},pos {self.pos}"))
-        except SyntaxError:
+                    raise SyntaxError(f"Expected token {expected_types}, got {token},pos {self.pos}")
+        except Exception as e:
+            print(e)
             if isinstance(expected_types, list):
                 token = expected_types[0]
             else:
                 token = expected_types
+            if(self.tokens[self.pos + 1][0] != expected_types):
+                self.tokens.insert(self.pos , token)
+            else:
+                del self.tokens[self.pos]
 
         self.pos += 1
         return token

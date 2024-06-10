@@ -83,52 +83,52 @@ def get_next_token(expr):
         return Token(TokenType.WHITESPACE), expr
     ###########################################################
 
-    elif expr[0:6] == 'break ':
+    elif expr[0:5] == 'break' and expr[5] in ' (){}[]+=-*%;':
         expr = expr[5:]
         symbol_table[count].append((TokenType.BREAK.value, 'break'))
         lexis_list.append((TokenType.BREAK.value, 'break'))
         return Token(TokenType.BREAK), expr
-    elif expr[0:5] == 'bool ':
+    elif expr[0:4] == 'bool' and expr[4] in ' (){}[]+=-*%;':
         symbol_table[count].append((TokenType.BOOL.value, 'bool'))
         lexis_list.append((TokenType.BOOL.value, 'BOOL'))
         expr = expr[4:]
         return Token(TokenType.BOOL), expr
-    elif expr[0:6] == 'char ':
+    elif expr[0:4] == 'char' and expr[4] in ' (){}[]+=-*%;':
         symbol_table[count].append((TokenType.CHAR.value, 'char'))
         lexis_list.append((TokenType.CHAR.value, 'char'))
         expr = expr[4:]
         return Token(TokenType.CHAR), expr
-    elif expr[0:9] == 'continue ':
+    elif expr[0:8] == 'continue' and expr[8] in ' (){}[]+=-*%;':
         symbol_table[count].append((TokenType.CONTINUE.value, 'continue'))
         lexis_list.append((TokenType.CONTINUE.value, 'continue'))
         expr = expr[8:]
         return Token(TokenType.CONTINUE), expr
-    elif expr[0:4] == 'for ':
+    elif expr[0:3] == 'for' and expr[3] in ' (){}[]+=-*%;':
         symbol_table[count].append((TokenType.FOR.value, 'for'))
         lexis_list.append((TokenType.FOR.value, 'for'))
         expr = expr[3:]
         return Token(TokenType.FOR), expr
-    elif expr[0:6] == 'false ':
+    elif expr[0:5] == 'false' and expr[5] in ' (){}[]+=-*%;':
         symbol_table[count].append((TokenType.FALSE.value, 'false'))
         lexis_list.append((TokenType.FALSE.value, 'false'))
         expr = expr[5:]
         return Token(TokenType.FALSE), expr
-    elif expr[0:3] == 'if ':
+    elif expr[0:2] == 'if' and expr[2] in ' (){}[]+=-*%;':
         symbol_table[count].append((TokenType.IF.value, 'if'))
         lexis_list.append((TokenType.IF.value, 'if'))
         expr = expr[2:]
         return Token(TokenType.IF), expr
-    elif expr[0:5] == 'else ':
+    elif expr[0:4] == 'else' and expr[4] in ' (){}[]+=-*%;':
         symbol_table[count].append((TokenType.ELSE.value, 'else'))
         lexis_list.append((TokenType.ELSE.value, 'else'))
         expr = expr[4:]
         return Token(TokenType.ELSE), expr
-    elif expr[0:4] == 'int ':
+    elif expr[0:3] == 'int' and expr[3] in ' (){}[]+=-*%;':
         symbol_table[count].append((TokenType.INT.value, 'int'))
         lexis_list.append((TokenType.INT.value, 'int'))
         expr = expr[3:]
         return Token(TokenType.INT), expr
-    elif expr[0:5] == 'print':
+    elif expr[0:5] == 'print' and expr[5] in ' (){}[]+=-*%;':
         symbol_table[count].append((TokenType.PRINT.value, 'print'))
         lexis_list.append((TokenType.PRINT.value, 'print'))
         expr = expr[5:]
@@ -138,12 +138,12 @@ def get_next_token(expr):
         lexis_list.append((TokenType.RETURN.value, 'return'))
         expr = expr[6:]
         return Token(TokenType.RETURN), expr
-    elif expr[0:5] == 'true ':
+    elif expr[0:4] == 'true' and expr[4] in ' (){}[]+=-*%;':
         symbol_table[count].append((TokenType.TRUE.value, 'true'))
         lexis_list.append((TokenType.TRUE.value, 'true'))
         expr = expr[4:]
         return Token(TokenType.TRUE), expr
-    elif expr[0:5] == 'void ':
+    elif expr[0:4] == 'void' and expr[4] in ' (){}[]+=-*%;':
         symbol_table[count].append((TokenType.VOID.value, 'void'))
         lexis_list.append((TokenType.VOID.value, 'void'))
         expr = expr[4:]
