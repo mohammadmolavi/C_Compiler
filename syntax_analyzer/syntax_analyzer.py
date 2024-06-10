@@ -88,11 +88,8 @@ class Parser:
                 self.consume('T_SEMICOLON')
             else:
                 # self.consume('T_SEMICOLON')
-                print(SyntaxError(f"Expected token T_SEMICOLON, got {self.current_token()},pos {self.pos}"))
-                if self.tokens[self.pos +1][0] != 'T_SEMICOLON':
-                    self.tokens.insert(self.pos, 'T_SEMICOLON')
-                else:
-                    del self.tokens[self.pos]
+                print(SyntaxError(f'Unexpected token {self.current_token()}'))
+                del self.tokens[self.pos]
 
 
         return exps
