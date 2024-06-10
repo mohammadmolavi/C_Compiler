@@ -3,7 +3,7 @@ void test_function(int a, int b, bool c) {
     if (c == true) {
         // Calculate and print the sum of a and b
         int _sum = a + b;
-        print("Sum: ", sum);
+        print("Sum: ", sum));
     } else {
         // Calculate and print the difference of a and b
         int difference = a - b;
@@ -13,7 +13,7 @@ void test_function(int a, int b, bool c) {
 
 int main() {
     // Initialize variables of different types
-    int _integer_var = 10;
+    int _integer_var = 10 10;
     char _char_var = 'A';
     bool bool_var = true;
     string_var = "Hello, world!";

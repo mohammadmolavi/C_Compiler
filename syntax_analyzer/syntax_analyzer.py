@@ -62,7 +62,7 @@ class Parser:
     def EXP(self):
         exps = []
         while self.pos < len(self.tokens) and self.current_token_type() != 'T_RB':
-            if self.current_token_type() == 'T_ID' or (self.current_token_type() in ['T_INT', 'T_CHAR', 'T_BOOL']):
+            if self.current_token_type() in ['T_ID','T_INT', 'T_CHAR', 'T_BOOL']:
                 exps.append(self.EXP1())
             elif self.current_token_type() == 'T_FOR':
                 exps.append(self.FOR())
@@ -80,9 +80,11 @@ class Parser:
                 exps.append(self.COMMENT())
             elif self.current_token_type() == 'T_SEMICOLON':
                 self.consume('T_SEMICOLON')
-
             else:
-                break
+                print(SyntaxError(f"Expected token T_SEMICOLON, got {self.current_token()},pos {self.pos}"))
+                self.pos += 1
+
+
         return exps
 
     def EXP1(self):
@@ -114,7 +116,10 @@ class Parser:
                 self.consume('T_ID')
                 return return_dic
         else:
-            raise SyntaxError(f"Unexpected token {token}")
+            print(SyntaxError(f"Unexpected token {token} in pos {self.pos}"))
+            self.pos += 1
+            return {}
+
 
     def CALL_FUNC(self):
         params = []
@@ -253,12 +258,19 @@ class Parser:
 
     def consume(self, expected_types):
         token = self.current_token()
-        if isinstance(expected_types, list):
-            if token[0] not in expected_types:
-                raise SyntaxError(f"Expected token {expected_types}, got {token}")
-        else:
-            if token[0] != expected_types:
-                raise SyntaxError(f"Expected token {expected_types}, got {token}")
+        try:
+            if isinstance(expected_types, list):
+                if token[0] not in expected_types:
+                    raise SyntaxError(f"Expected token {expected_types}, got {token},pos {self.pos}")
+            else:
+                if token[0] != expected_types:
+                    print(SyntaxError(f"Expected token {expected_types}, got {token},pos {self.pos}"))
+        except SyntaxError:
+            if isinstance(expected_types, list):
+                token = expected_types[0]
+            else:
+                token = expected_types
+
         self.pos += 1
         return token
 
