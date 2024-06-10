@@ -149,54 +149,54 @@ def get_next_token(expr):
         expr = expr[4:]
         return Token(TokenType.VOID), expr
     ###########################################################
-    elif expr[:2] == '< ':
-        symbol_table[count].append((TokenType.ROP_S.value, '<'))
-        lexis_list.append((TokenType.ROP_S.value, '<'))
-        expr = expr[1:]
-        return Token(TokenType.ROP_S), expr
-    elif expr[:2] == '> ':
-        symbol_table[count].append((TokenType.ROP_G.value, '>'))
-        lexis_list.append((TokenType.ROP_G.value, '>'))
-        expr = expr[1:]
-        return Token(TokenType.ROP_G), expr
-    elif expr[0:3] == '<= ':
+    elif expr[0:2] == '<=':
         symbol_table[count].append((TokenType.ROP_SE.value, '<='))
         lexis_list.append((TokenType.ROP_SE.value, '<='))
         expr = expr[2:]
         return Token(TokenType.ROP_SE), expr
-    elif expr[0:3] == '>= ':
+    elif expr[0:2] == '>=':
         symbol_table[count].append((TokenType.ROP_GE.value, '>='))
         lexis_list.append((TokenType.ROP_GE.value, '>='))
         expr = expr[2:]
         return Token(TokenType.ROP_GE), expr
-    elif expr[0:3] == '== ':
+    elif expr[0] == '<':
+        symbol_table[count].append((TokenType.ROP_S.value, '<'))
+        lexis_list.append((TokenType.ROP_S.value, '<'))
+        expr = expr[1:]
+        return Token(TokenType.ROP_S), expr
+    elif expr[0] == '>':
+        symbol_table[count].append((TokenType.ROP_G.value, '>'))
+        lexis_list.append((TokenType.ROP_G.value, '>'))
+        expr = expr[1:]
+        return Token(TokenType.ROP_G), expr
+    elif expr[0:2] == '==':
         symbol_table[count].append((TokenType.ROP_EQ.value, '=='))
         lexis_list.append((TokenType.ROP_EQ.value, '=='))
         expr = expr[2:]
         return Token(TokenType.ROP_EQ), expr
-    elif expr[0:3] == '!= ':
+    elif expr[0:2] == '!=':
         symbol_table[count].append((TokenType.ROP_NE.value, '!='))
         lexis_list.append((TokenType.ROP_NE.value, '!='))
         expr = expr[2:]
         return Token(TokenType.ROP_NE), expr
     ###########################################################
-    elif expr[:2] == '= ':
+    elif expr[0] == '=':
         symbol_table[count].append((TokenType.ASSIGN.value, '='))
         lexis_list.append((TokenType.ASSIGN.value, '='))
         expr = expr[1:]
         return Token(TokenType.ASSIGN), expr
     ###########################################################
-    elif expr[0:3] == '&& ':
+    elif expr[0:2] == '&&':
         symbol_table[count].append((TokenType.LOP_AND.value, '&&'))
         lexis_list.append((TokenType.LOP_AND.value, '&&'))
         expr = expr[2:]
         return Token(TokenType.LOP_AND), expr
-    elif expr[0:3] == '|| ':
+    elif expr[0:2] == '||':
         symbol_table[count].append((TokenType.LOP_OR.value, '||'))
         lexis_list.append((TokenType.LOP_OR.value, '||'))
         expr = expr[2:]
         return Token(TokenType.LOP_OR), expr
-    elif expr[:2] == '! ':
+    elif expr[:1] == '!':
         symbol_table[count].append((TokenType.LOP_NOT.value, '!'))
         lexis_list.append((TokenType.LOP_NOT.value, '!'))
         expr = expr[1:]

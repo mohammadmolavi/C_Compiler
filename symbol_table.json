@@ -876,11 +876,43 @@
         ],
         [
             "T_ID",
-            "static_cast"
+            "pow"
         ],
         [
-            "ERROR",
-            "<int>(pow(num1 "
+            "T_LP",
+            "("
+        ],
+        [
+            "T_ID",
+            "num1"
+        ],
+        [
+            "T_AOP_PL",
+            "+"
+        ],
+        [
+            "T_DECIMAL",
+            "1"
+        ],
+        [
+            "T_COMMA",
+            ","
+        ],
+        [
+            "T_DECIMAL",
+            "2"
+        ],
+        [
+            "T_RP",
+            ")"
+        ],
+        [
+            "T_SEMICOLON",
+            ";"
+        ],
+        [
+            "END",
+            "end"
         ]
     ],
     "37": [
