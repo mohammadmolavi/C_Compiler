@@ -1,7 +1,3 @@
-import traceback
-
-import exceptiongroup
-
 
 class Parser:
     def __init__(self, tokens):
@@ -12,7 +8,7 @@ class Parser:
         return self.START()
 
     def START(self):
-        if self.current_token_type() == 'T_COMMENT':
+        while self.current_token_type() == 'T_COMMENT':
             self.COMMENT()
         funcs = self.FUNCS()
         return {'type': 'START', 'body': funcs}
@@ -145,7 +141,9 @@ class Parser:
         if self.current_token_type() in ['T_ID', 'T_DECIMAL', 'T_CHARACTER', 'T_HEXADECIMAL'
             , 'T_STRING', 'T_TRUE', 'T_FALSE']:
             params.append(self.CALL_PARAM())
-            params.extend(self.CALL_MORE_PARAMS())
+            param = self.CALL_MORE_PARAMS()
+            if param != None:
+                params.extend(self.CALL_MORE_PARAMS())
             return params
         elif self.current_token_type() == 'T_RP':
             return params
@@ -278,10 +276,12 @@ class Parser:
                 token = expected_types[0]
             else:
                 token = expected_types
-            if(self.tokens[self.pos + 1][0] != expected_types):
-                self.tokens.insert(self.pos , token)
+            if (len(self.tokens) -1) != (self.pos + 1):
+                if(self.tokens[self.pos + 1][0] != expected_types):
+                    self.tokens.insert(self.pos , token)
             else:
-                del self.tokens[self.pos]
+                if (len(self.tokens)) != (self.pos):
+                    del self.tokens[self.pos]
 
         self.pos += 1
         return token
@@ -292,21 +292,6 @@ class Parser:
     def current_token_type(self):
         return self.tokens[self.pos][0]
 
-
-# Example usage
-tokens = [
-    ('T_INT', 'int'), ('T_ID', 'main'), ('T_LP', '('), ('T_RP', ')'),
-    ('T_LB', '{'), ('T_INT', 'int'), ('T_ID', 'x'), ('T_ASSIGN', '='),
-    ('T_DECIMAL', '5'), ('T_SEMICOLON', ';'), ('T_ID', 'x'), ('T_ASSIGN', '='),
-    ('T_ID', 'x'), ('T_AOP_PL', '+'), ('T_DECIMAL', '1'), ('T_SEMICOLON', ';'),
-    ('T_RETURN', 'return'), ('T_ID', 'x'), ('T_AOP_PL', '+'), ('T_DECIMAL', '1'), ('T_SEMICOLON', ';'), ('T_RB', '}'),
-    ('T_INT', 'int'), ('T_ID', 'main'), ('T_LP', '('), ('T_RP', ')'),
-    ('T_LB', '{'), ('T_INT', 'int'), ('T_ID', 'x'), ('T_ASSIGN', '='),
-    ('T_DECIMAL', '5'), ('T_SEMICOLON', ';'), ('T_ID', 'x'), ('T_ASSIGN', '='),
-    ('T_ID', 'x'), ('T_AOP_PL', '+'), ('T_DECIMAL', '1'), ('T_SEMICOLON', ';'),
-    ('T_RETURN', 'return'), ('T_ID', 'main'), ('T_LP', '('), ('T_ID', 'x'), ('T_RP', ')'), ('T_AOP_PL', '+'),
-    ('T_DECIMAL', '1'), ('T_SEMICOLON', ';'), ('T_RB', '}')
-]
 
 import json
 

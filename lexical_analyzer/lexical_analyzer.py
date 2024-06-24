@@ -367,7 +367,8 @@ def get_next_token(expr):
         expr = expr[len(comment):]
         symbol_table[count].append((TokenType.COMMENT.value, comment))
         lexis_list.append((TokenType.COMMENT.value, comment))
-        return Token(TokenType.COMMENT, comment), expr
+        # return Token(TokenType.COMMENT, comment), expr
+        return Token(TokenType.WHITESPACE) , ' '
     ###########################################################
     if expr[0] in '+-*/%':
         expr2 = expr[0]
@@ -407,7 +408,7 @@ def get_next_token(expr):
 
 count = 0
 symbol_table = {}
-reader = open("../program.txt", "r")
+reader = open("../test3.txt", "r")
 file_path = '../symbol_table.json'
 file_path2 = '../tokens.json'
 lexis_list = []
