@@ -1,16 +1,42 @@
 {
     "1": [
         [
-            "T_CHAR",
-            "char"
+            "END",
+            "end"
+        ]
+    ],
+    "2": [
+        [
+            "T_INT",
+            "int"
         ],
         [
             "T_ID",
-            "greet"
+            "add"
         ],
         [
             "T_LP",
             "("
+        ],
+        [
+            "T_INT",
+            "int"
+        ],
+        [
+            "T_ID",
+            "a"
+        ],
+        [
+            "T_COMMA",
+            ","
+        ],
+        [
+            "T_INT",
+            "int"
+        ],
+        [
+            "T_ID",
+            "b"
         ],
         [
             "T_RP",
@@ -25,40 +51,22 @@
             "end"
         ]
     ],
-    "2": [
-        [
-            "T_PRINT",
-            "print"
-        ],
-        [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_STRING",
-            "\"Hello, world!\\n\""
-        ],
-        [
-            "T_RP",
-            ")"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
     "3": [
         [
             "T_RETURN",
             "return"
         ],
         [
-            "T_STRING",
-            "\"Hello\""
+            "T_ID",
+            "a"
+        ],
+        [
+            "T_AOP_PL",
+            "+"
+        ],
+        [
+            "T_ID",
+            "b"
         ],
         [
             "T_SEMICOLON",
@@ -87,20 +95,20 @@
     ],
     "6": [
         [
-            "T_VOID",
-            "void"
+            "T_BOOL",
+            "bool"
         ],
         [
             "T_ID",
-            "printNumber"
+            "isPositive"
         ],
         [
             "T_LP",
             "("
         ],
         [
-            "T_CHAR",
-            "char"
+            "T_INT",
+            "int"
         ],
         [
             "T_ID",
@@ -121,28 +129,20 @@
     ],
     "7": [
         [
-            "T_ID",
-            "printf"
-        ],
-        [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_STRING",
-            "\"Number: %d\\n\""
-        ],
-        [
-            "T_COMMA",
-            ","
+            "T_RETURN",
+            "return"
         ],
         [
             "T_ID",
             "num"
         ],
         [
-            "T_RP",
-            ")"
+            "T_ROP_G",
+            ">"
+        ],
+        [
+            "T_DECIMAL",
+            "0"
         ],
         [
             "T_SEMICOLON",
@@ -197,6 +197,12 @@
     ],
     "11": [
         [
+            "END",
+            "end"
+        ]
+    ],
+    "12": [
+        [
             "T_INT",
             "int"
         ],
@@ -205,30 +211,12 @@
             "x"
         ],
         [
-            "T_COMMA",
-            ","
+            "T_ASSIGN",
+            "="
         ],
         [
-            "T_ID",
-            "y"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "12": [
-        [
-            "T_CHAR",
-            "char"
-        ],
-        [
-            "T_ID",
-            "z"
+            "T_DECIMAL",
+            "10"
         ],
         [
             "T_SEMICOLON",
@@ -241,12 +229,20 @@
     ],
     "13": [
         [
-            "T_BOOL",
-            "bool"
+            "T_INT",
+            "int"
         ],
         [
             "T_ID",
-            "flag"
+            "y"
+        ],
+        [
+            "T_ASSIGN",
+            "="
+        ],
+        [
+            "T_DECIMAL",
+            "20"
         ],
         [
             "T_SEMICOLON",
@@ -259,35 +255,39 @@
     ],
     "14": [
         [
-            "END",
-            "end"
-        ]
-    ],
-    "15": [
-        [
             "T_INT",
             "int"
         ],
         [
             "T_ID",
-            "arr"
+            "z"
         ],
         [
-            "T_LSB",
-            "["
+            "T_ASSIGN",
+            "="
         ],
         [
-            "T_DECIMAL",
-            "10"
+            "T_ID",
+            "x"
         ],
         [
-            "T_RSB",
-            "]"
+            "T_AOP_PL",
+            "+"
+        ],
+        [
+            "T_ID",
+            "y"
         ],
         [
             "T_SEMICOLON",
             ";"
         ],
+        [
+            "END",
+            "end"
+        ]
+    ],
+    "15": [
         [
             "END",
             "end"
@@ -295,145 +295,37 @@
     ],
     "16": [
         [
+            "T_BOOL",
+            "bool"
+        ],
+        [
+            "T_ID",
+            "flag"
+        ],
+        [
+            "T_ASSIGN",
+            "="
+        ],
+        [
+            "T_TRUE",
+            "true"
+        ],
+        [
+            "T_SEMICOLON",
+            ";"
+        ],
+        [
             "END",
             "end"
         ]
     ],
     "17": [
         [
-            "T_INT",
-            "int"
-        ],
-        [
-            "T_ID",
-            "a"
-        ],
-        [
-            "T_COMMA",
-            ","
-        ],
-        [
-            "T_ID",
-            "b"
-        ],
-        [
-            "T_COMMA",
-            ","
-        ],
-        [
-            "T_ID",
-            "c"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
             "END",
             "end"
         ]
     ],
     "18": [
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "19": [
-        [
-            "T_INT",
-            "int"
-        ],
-        [
-            "T_ID",
-            "d"
-        ],
-        [
-            "T_COMMA",
-            ","
-        ],
-        [
-            "T_ID",
-            "e"
-        ],
-        [
-            "T_COMMA",
-            ","
-        ],
-        [
-            "T_ID",
-            "f"
-        ],
-        [
-            "T_COMMA",
-            ","
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "20": [
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "21": [
-        [
-            "T_ID",
-            "x"
-        ],
-        [
-            "T_ASSIGN",
-            "="
-        ],
-        [
-            "T_DECIMAL",
-            "10"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "22": [
-        [
-            "T_ID",
-            "y"
-        ],
-        [
-            "T_ASSIGN",
-            "="
-        ],
-        [
-            "T_DECIMAL",
-            "5"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "23": [
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "24": [
         [
             "T_IF",
             "if"
@@ -453,6 +345,170 @@
         [
             "T_ID",
             "y"
+        ],
+        [
+            "T_RP",
+            ")"
+        ],
+        [
+            "T_LB",
+            "{"
+        ],
+        [
+            "END",
+            "end"
+        ]
+    ],
+    "19": [
+        [
+            "T_PRINT",
+            "print"
+        ],
+        [
+            "T_LP",
+            "("
+        ],
+        [
+            "T_STRING",
+            "\"x is greater than y\""
+        ],
+        [
+            "T_RP",
+            ")"
+        ],
+        [
+            "T_SEMICOLON",
+            ";"
+        ],
+        [
+            "END",
+            "end"
+        ]
+    ],
+    "20": [
+        [
+            "T_RB",
+            "}"
+        ],
+        [
+            "T_ELSE",
+            "else"
+        ],
+        [
+            "T_LB",
+            "{"
+        ],
+        [
+            "END",
+            "end"
+        ]
+    ],
+    "21": [
+        [
+            "T_PRINT",
+            "print"
+        ],
+        [
+            "T_LP",
+            "("
+        ],
+        [
+            "T_STRING",
+            "\"x is not greater than y\""
+        ],
+        [
+            "T_RP",
+            ")"
+        ],
+        [
+            "T_SEMICOLON",
+            ";"
+        ],
+        [
+            "END",
+            "end"
+        ]
+    ],
+    "22": [
+        [
+            "T_RB",
+            "}"
+        ],
+        [
+            "END",
+            "end"
+        ]
+    ],
+    "23": [
+        [
+            "END",
+            "end"
+        ]
+    ],
+    "24": [
+        [
+            "T_FOR",
+            "for"
+        ],
+        [
+            "T_LP",
+            "("
+        ],
+        [
+            "T_INT",
+            "int"
+        ],
+        [
+            "T_ID",
+            "i"
+        ],
+        [
+            "T_ASSIGN",
+            "="
+        ],
+        [
+            "T_DECIMAL",
+            "0"
+        ],
+        [
+            "T_SEMICOLON",
+            ";"
+        ],
+        [
+            "T_ID",
+            "i"
+        ],
+        [
+            "T_ROP_S",
+            "<"
+        ],
+        [
+            "T_DECIMAL",
+            "10"
+        ],
+        [
+            "T_SEMICOLON",
+            ";"
+        ],
+        [
+            "T_ID",
+            "i"
+        ],
+        [
+            "T_ASSIGN",
+            "="
+        ],
+        [
+            "T_ID",
+            "i"
+        ],
+        [
+            "T_AOP_PL",
+            "+"
+        ],
+        [
+            "T_DECIMAL",
+            "1"
         ],
         [
             "T_RP",
@@ -470,19 +526,23 @@
     "25": [
         [
             "T_ID",
-            "printf"
+            "x"
         ],
         [
-            "T_LP",
-            "("
+            "T_ASSIGN",
+            "="
         ],
         [
-            "T_STRING",
-            "\"x is greater than y\\n\""
+            "T_ID",
+            "x"
         ],
         [
-            "T_RP",
-            ")"
+            "T_AOP_PL",
+            "+"
+        ],
+        [
+            "T_ID",
+            "i"
         ],
         [
             "T_SEMICOLON",
@@ -495,12 +555,36 @@
     ],
     "26": [
         [
-            "T_RB",
-            "}"
+            "T_IF",
+            "if"
+        ],
+        [
+            "T_LP",
+            "("
         ],
         [
             "T_ID",
-            "else"
+            "isPositive"
+        ],
+        [
+            "T_LP",
+            "("
+        ],
+        [
+            "T_ID",
+            "x"
+        ],
+        [
+            "T_RP",
+            ")"
+        ],
+        [
+            "T_RP",
+            ")"
+        ],
+        [
+            "T_LB",
+            "{"
         ],
         [
             "END",
@@ -509,8 +593,8 @@
     ],
     "27": [
         [
-            "T_ID",
-            "printf"
+            "T_PRINT",
+            "print"
         ],
         [
             "T_LP",
@@ -518,7 +602,7 @@
         ],
         [
             "T_STRING",
-            "\"x is less than or equal to y\\n\""
+            "\"x is positive\""
         ],
         [
             "T_RP",
@@ -535,34 +619,12 @@
     ],
     "28": [
         [
-            "END",
-            "end"
-        ]
-    ],
-    "29": [
-        [
-            "T_IF",
-            "if"
+            "T_RB",
+            "}"
         ],
         [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_ID",
-            "x"
-        ],
-        [
-            "T_ROP_G",
-            ">"
-        ],
-        [
-            "T_ID",
-            "y"
-        ],
-        [
-            "T_RP",
-            ")"
+            "T_ELSE",
+            "else"
         ],
         [
             "T_LB",
@@ -573,10 +635,10 @@
             "end"
         ]
     ],
-    "30": [
+    "29": [
         [
-            "T_ID",
-            "printf"
+            "T_PRINT",
+            "print"
         ],
         [
             "T_LP",
@@ -584,7 +646,7 @@
         ],
         [
             "T_STRING",
-            "\"x is greater than y\\n\""
+            "\"x is not positive\""
         ],
         [
             "T_RP",
@@ -593,6 +655,16 @@
         [
             "T_SEMICOLON",
             ";"
+        ],
+        [
+            "END",
+            "end"
+        ]
+    ],
+    "30": [
+        [
+            "T_RB",
+            "}"
         ],
         [
             "END",
@@ -605,59 +677,11 @@
             "}"
         ],
         [
-            "T_ELSE",
-            "else"
-        ],
-        [
-            "T_IF",
-            "if"
-        ],
-        [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_ID",
-            "x"
-        ],
-        [
-            "T_ROP_S",
-            "<"
-        ],
-        [
-            "T_ID",
-            "y"
-        ],
-        [
-            "T_RP",
-            ")"
-        ],
-        [
             "END",
             "end"
         ]
     ],
     "32": [
-        [
-            "T_ID",
-            "printf"
-        ],
-        [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_STRING",
-            "\"x is less than y\\n\""
-        ],
-        [
-            "T_RP",
-            ")"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
         [
             "END",
             "end"
@@ -671,24 +695,24 @@
     ],
     "34": [
         [
-            "T_IF",
-            "if"
+            "T_INT",
+            "int"
         ],
         [
             "T_ID",
-            "x"
+            "nestedVar"
         ],
         [
-            "T_ROP_G",
-            ">"
+            "T_ASSIGN",
+            "="
         ],
         [
-            "T_ID",
-            "y"
+            "T_DECIMAL",
+            "100"
         ],
         [
-            "T_LB",
-            "{"
+            "T_SEMICOLON",
+            ";"
         ],
         [
             "END",
@@ -697,24 +721,32 @@
     ],
     "35": [
         [
-            "T_ID",
-            "printf"
+            "T_IF",
+            "if"
         ],
         [
             "T_LP",
             "("
         ],
         [
-            "T_STRING",
-            "\"x is greater than y\\n\""
+            "T_ID",
+            "nestedVar"
+        ],
+        [
+            "T_ROP_G",
+            ">"
+        ],
+        [
+            "T_DECIMAL",
+            "50"
         ],
         [
             "T_RP",
             ")"
         ],
         [
-            "T_SEMICOLON",
-            ";"
+            "T_LB",
+            "{"
         ],
         [
             "END",
@@ -723,8 +755,24 @@
     ],
     "36": [
         [
-            "T_RB",
-            "}"
+            "T_PRINT",
+            "print"
+        ],
+        [
+            "T_LP",
+            "("
+        ],
+        [
+            "T_STRING",
+            "\"Nested variable is large\""
+        ],
+        [
+            "T_RP",
+            ")"
+        ],
+        [
+            "T_SEMICOLON",
+            ";"
         ],
         [
             "END",
@@ -733,71 +781,15 @@
     ],
     "37": [
         [
+            "T_RB",
+            "}"
+        ],
+        [
             "END",
             "end"
         ]
     ],
     "38": [
-        [
-            "T_FOR",
-            "for"
-        ],
-        [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_INT",
-            "int"
-        ],
-        [
-            "T_ID",
-            "i"
-        ],
-        [
-            "T_ASSIGN",
-            "="
-        ],
-        [
-            "T_DECIMAL",
-            "0"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "T_ID",
-            "i"
-        ],
-        [
-            "T_ROP_S",
-            "<"
-        ],
-        [
-            "T_DECIMAL",
-            "10"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "T_ID",
-            "i"
-        ],
-        [
-            "T_AOP_PL",
-            "+"
-        ],
-        [
-            "T_AOP_PL",
-            "+"
-        ],
-        [
-            "T_RP",
-            ")"
-        ],
         [
             "END",
             "end"
@@ -805,8 +797,16 @@
     ],
     "39": [
         [
-            "T_LB",
-            "{"
+            "T_RETURN",
+            "return"
+        ],
+        [
+            "T_ID",
+            "z"
+        ],
+        [
+            "T_SEMICOLON",
+            ";"
         ],
         [
             "END",
@@ -814,628 +814,6 @@
         ]
     ],
     "40": [
-        [
-            "T_ID",
-            "printf"
-        ],
-        [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_STRING",
-            "\"%d \""
-        ],
-        [
-            "T_COMMA",
-            ","
-        ],
-        [
-            "T_ID",
-            "i"
-        ],
-        [
-            "T_RP",
-            ")"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "41": [
-        [
-            "T_RB",
-            "}"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "42": [
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "43": [
-        [
-            "T_INT",
-            "int"
-        ],
-        [
-            "T_ID",
-            "j"
-        ],
-        [
-            "T_ASSIGN",
-            "="
-        ],
-        [
-            "T_DECIMAL",
-            "0"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "44": [
-        [
-            "T_ID",
-            "while"
-        ],
-        [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_ID",
-            "j"
-        ],
-        [
-            "T_ROP_S",
-            "<"
-        ],
-        [
-            "T_DECIMAL",
-            "5"
-        ],
-        [
-            "T_RP",
-            ")"
-        ],
-        [
-            "T_LB",
-            "{"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "45": [
-        [
-            "T_ID",
-            "printf"
-        ],
-        [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_STRING",
-            "\"%d \""
-        ],
-        [
-            "T_COMMA",
-            ","
-        ],
-        [
-            "T_ID",
-            "j"
-        ],
-        [
-            "T_RP",
-            ")"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "46": [
-        [
-            "T_ID",
-            "j"
-        ],
-        [
-            "T_AOP_PL",
-            "+"
-        ],
-        [
-            "T_AOP_PL",
-            "+"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "47": [
-        [
-            "T_RB",
-            "}"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "48": [
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "49": [
-        [
-            "T_FOR",
-            "for"
-        ],
-        [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_INT",
-            "int"
-        ],
-        [
-            "T_ID",
-            "k"
-        ],
-        [
-            "T_ASSIGN",
-            "="
-        ],
-        [
-            "T_DECIMAL",
-            "0"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "T_ID",
-            "k"
-        ],
-        [
-            "T_ROP_S",
-            "<"
-        ],
-        [
-            "T_DECIMAL",
-            "10"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "T_ID",
-            "k"
-        ],
-        [
-            "T_AOP_PL",
-            "+"
-        ],
-        [
-            "T_AOP_PL",
-            "+"
-        ],
-        [
-            "T_RP",
-            ")"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "50": [
-        [
-            "T_LB",
-            "{"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "51": [
-        [
-            "T_CONTINUE",
-            "continue"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "52": [
-        [
-            "T_RB",
-            "}"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "53": [
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "54": [
-        [
-            "T_ID",
-            "while"
-        ],
-        [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_DECIMAL",
-            "1"
-        ],
-        [
-            "T_RP",
-            ")"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "55": [
-        [
-            "T_LB",
-            "{"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "56": [
-        [
-            "T_BREAK",
-            "break"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "57": [
-        [
-            "T_RB",
-            "}"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "58": [
-        [
-            "T_INT",
-            "int"
-        ],
-        [
-            "T_ID",
-            "num"
-        ],
-        [
-            "T_ASSIGN",
-            "="
-        ],
-        [
-            "T_DECIMAL",
-            "10"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "59": [
-        [
-            "T_ID",
-            "printf"
-        ],
-        [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_STRING",
-            "\"Number: %d\\n\""
-        ],
-        [
-            "T_COMMA",
-            ","
-        ],
-        [
-            "T_ID",
-            "num"
-        ],
-        [
-            "T_RP",
-            ")"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "60": [
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "61": [
-        [
-            "T_CHAR",
-            "char"
-        ],
-        [
-            "T_ID",
-            "ch"
-        ],
-        [
-            "T_ASSIGN",
-            "="
-        ],
-        [
-            "T_CHARACTER",
-            "'A'"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "62": [
-        [
-            "T_ID",
-            "printf"
-        ],
-        [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_STRING",
-            "\"Character: %c\\n\""
-        ],
-        [
-            "T_COMMA",
-            ","
-        ],
-        [
-            "T_ID",
-            "ch"
-        ],
-        [
-            "T_RP",
-            ")"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "63": [
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "64": [
-        [
-            "T_CHAR",
-            "char"
-        ],
-        [
-            "T_ID",
-            "str"
-        ],
-        [
-            "T_LSB",
-            "["
-        ],
-        [
-            "T_RSB",
-            "]"
-        ],
-        [
-            "T_ASSIGN",
-            "="
-        ],
-        [
-            "T_STRING",
-            "\"Hello, world!\""
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "65": [
-        [
-            "T_ID",
-            "printf"
-        ],
-        [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_STRING",
-            "\"String: %d\\n\""
-        ],
-        [
-            "T_COMMA",
-            ","
-        ],
-        [
-            "T_ID",
-            "str"
-        ],
-        [
-            "T_RP",
-            ")"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "66": [
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "67": [
-        [
-            "T_ID",
-            "greet"
-        ],
-        [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_RP",
-            ")"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "68": [
-        [
-            "T_ID",
-            "printNumber"
-        ],
-        [
-            "T_LP",
-            "("
-        ],
-        [
-            "T_CHARACTER",
-            "'5'"
-        ],
-        [
-            "T_RP",
-            ")"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "69": [
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "70": [
-        [
-            "T_RETURN",
-            "return"
-        ],
-        [
-            "T_DECIMAL",
-            "0"
-        ],
-        [
-            "T_SEMICOLON",
-            ";"
-        ],
-        [
-            "END",
-            "end"
-        ]
-    ],
-    "71": [
         [
             "T_RB",
             "}"

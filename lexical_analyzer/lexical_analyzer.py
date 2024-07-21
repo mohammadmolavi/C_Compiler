@@ -408,7 +408,7 @@ def get_next_token(expr):
 
 count = 0
 symbol_table = {}
-reader = open("../test3.txt", "r")
+reader = open("../test.txt", "r")
 file_path = '../symbol_table.json'
 file_path2 = '../tokens.json'
 lexis_list = []

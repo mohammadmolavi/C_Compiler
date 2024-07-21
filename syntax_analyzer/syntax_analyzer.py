@@ -15,8 +15,11 @@ class Parser:
 
     def FUNCS(self):
         funcs = []
+        funcs.append(self.FUNC())
         while self.pos < len(self.tokens) and self.current_token_type() in ['T_INT', 'T_CHAR', 'T_BOOL', 'T_VOID']:
             funcs.append(self.FUNC())
+        if (len(funcs) == 0):
+            funcs = funcs[0]
         return funcs
 
     def FUNC(self):
@@ -115,8 +118,20 @@ class Parser:
             self.consume(['T_INT', 'T_BOOL', 'T_CHAR'])
             token = self.current_token()
             if token[0] == 'T_ID':
-                return_dic['declarator'] = token[1]
+                return_dic['declarator'] = []
+                return_dic['declarator'].append(token[1])
                 self.consume('T_ID')
+                token = self.current_token()
+                while (token[0] == 'T_COMMA'):
+                    self.consume('T_COMMA')
+                    token = self.current_token()
+                    self.consume('T_ID')
+                    return_dic['declarator'].append(token[1])
+                if(token[0] == 'T_LSB'):
+                    self.consume('T_LSB')
+                    token = self.consume('T_DECIMAL')
+                    self.consume('T_RSB')
+                    return_dic['array_length'] = token[1]
                 return return_dic
         else:
             print(SyntaxError(f"Unexpected token {token} in pos {self.pos}"))
@@ -300,5 +315,7 @@ with open("../tokens.json") as token_file:
 
 parser = Parser(tokens)
 ast = parser.parse()
-
 print(json.dumps(ast, indent=4))
+
+with open('../parsing_tree.json', 'w') as file:
+    json.dump(ast, file)
